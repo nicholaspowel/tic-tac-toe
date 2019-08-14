@@ -8,8 +8,11 @@ const gameEvents = require('./games/events.js')
 // require('./example')
 
 $(() => {
+  // Authorization handlers
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
+  // Game handlers
+  $('#new-game').on('click', gameEvents.onCreate)
 })
