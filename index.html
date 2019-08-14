@@ -27,7 +27,7 @@
               <input type="submit" value="Sign Up!">
             </fieldset>
           </form>
-          <!-- SIGN IN -->
+          <!-- SIGN IN, this will trigger hiding this section and showing the board and #user-info section -->
           <form id="sign-in" class='border'>
             <fieldset>
               <legend>Sign In!</legend>
@@ -39,8 +39,20 @@
         </section>
 
         <section id="#user-info">
-
-
+          <!-- Change Password -->
+          <form id="change-password" class='border'>
+            <fieldset>
+              <legend>Change Password</legend>
+              <input type="password" name="passwords[old]" placeholder="Current Password">
+              <input type="password" name="passwords[new]" placeholder="New Password">
+              <input type="submit" value="Change Password">
+            </fieldset>
+          </form>
+          <!-- SIGN OUT, this will trigger hiding this section and the board,
+           and showing the login fields again of the page -->
+          <div>
+            <button id="sign-out">Sign Out</button>
+          </div>
         </section>
 
         <div id="#game-board" class="invisible">
