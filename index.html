@@ -15,6 +15,7 @@
       <h1>Tic-Tac-Toe!</h1>
       <h2> This is a toy application. Do not enter real emails/passwords, or emails/passwords you have used anywhere else!</h2>
       <!-- possibly create a nav bar here for log out -->
+      <div id="message"></div>
       <main>
         <!-- Sign Up and Sign In form, will eventually go in a modal -->
         <section id="login" class="">
@@ -38,38 +39,41 @@
           </form>
         </section>
 
-        <section id="#user-info">
-          <!-- Change Password -->
-          <form id="change-password" class='border'>
-            <fieldset>
-              <legend>Change Password</legend>
-              <input type="password" name="passwords[old]" placeholder="Current Password">
-              <input type="password" name="passwords[new]" placeholder="New Password">
-              <input type="submit" value="Change Password">
-            </fieldset>
-          </form>
-          <!-- SIGN OUT, this will trigger hiding this section and the board,
-           and showing the login fields again of the page -->
-          <div>
-            <button id="sign-out">Sign Out</button>
-          </div>
-        </section>
 
-        <div id="#game-board" class="invisible">
-          <div class="container">
-            <div class="board row">
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
-              <div class="col-4 box tile"> </div>
+        <section id="on-auth" class="hidden">
+          <section id="#user-info">
+            <!-- Change Password -->
+            <div id="signed-in-user"></div>
+            <form id="change-password" class='border'>
+              <fieldset>
+                <legend>Change Password</legend>
+                <input type="password" name="passwords[old]" placeholder="Current Password">
+                <input type="password" name="passwords[new]" placeholder="New Password">
+                <input type="submit" value="Change Password">
+              </fieldset>
+            </form>
+            <!-- SIGN OUT, this will trigger hiding this section and the board,
+             and showing the login fields again of the page -->
+            <div>
+              <button id="sign-out">Sign Out</button>
+            </div>
+          </section>
+          <div id="game-board" class="">
+            <div class="container">
+              <div class="board row">
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+                <div class="col-4 box tile"> </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </body>
 </html>
