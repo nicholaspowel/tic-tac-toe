@@ -13,18 +13,51 @@
     </head>
     <body>
       <h1>Tic-Tac-Toe!</h1>
-      <div class="container">
-        <div class="board row">
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
-          <div class="col-4 box tile"> </div>
+      <h2> This is a toy application. Do not enter real emails/passwords, or emails/passwords you have used anywhere else!</h2>
+      <!-- possibly create a nav bar here for log out -->
+      <main>
+        <!-- Sign Up and Sign In form, will eventually go in a modal -->
+        <section id="login" class="">
+          <form id="sign-up" class='border'>
+            <fieldset>
+              <legend>Sign Up!</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" value="Sign Up!">
+            </fieldset>
+          </form>
+          <!-- SIGN IN -->
+          <form id="sign-in" class='border'>
+            <fieldset>
+              <legend>Sign In!</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="submit" value="Sign In!">
+            </fieldset>
+          </form>
+        </section>
+
+        <section id="#user-info">
+
+
+        </section>
+
+        <div id="#game-board" class="invisible">
+          <div class="container">
+            <div class="board row">
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+              <div class="col-4 box tile"> </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </main>
     </body>
 </html>

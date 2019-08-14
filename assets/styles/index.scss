@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+
 $tile-bg: #e5e5e5;
+
 .tile {
   background-color: $tile-bg;
 }
@@ -24,4 +26,8 @@ body {
 
 .alt-color {
   background-color: $alt-color;
+}
+
+.hidden {
+  display: none;
 }
