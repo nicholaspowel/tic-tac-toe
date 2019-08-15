@@ -31,16 +31,22 @@ const onShow = (event) => {
 
 const onTileClick = (event) => {
   event.preventDefault()
-  const move = [store.player, event.target.dataset.tile]
+  let isOver = store.game ? store.game.over : false
   // check if board is isOver
-  //  TODO: dipslay that game is over
-  // check if tile is filled
-  //  TODOkey: 'value'display that player can't click there
-  // placePiece
-  // checkWin
-  //  if win, set isOver
-  const data = store.game
-  updateBoard(data)
+  if (!isOver) {
+    //  TODO: dipslay that game is over
+  } else if (event.target.textContent !== '') {
+    //  TODOkey: 'value'display that player can't click there
+  } else {
+    const move = [store.player, event.target.dataset.tile]
+    const updateBoard = logic.placePiece(move)
+    isOver = logic.checkWin(move[1], updateBoard)
+    // placePiece
+    // checkWin
+    //  if win, set isOver
+
+    updateBoard(move, isOver)
+  }
 }
 // {
 //   "game": {
@@ -55,8 +61,17 @@ const onTileClick = (event) => {
 //   }
 // }
 
-const updateBoard = (data) => {
+const updateBoard = (move, isOver = false) => {
   event.preventDefault()
+  const data = {
+    game: {
+      cell: {
+        index: move[1],
+        value: move[0]
+      },
+      over: isOver
+    }
+  }
   // if data
   // {
   //   "game": {
