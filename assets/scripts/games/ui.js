@@ -25,21 +25,10 @@ const generateBoard = (board) => {
   })
 }
 
-// {
-//   "game": {
-//     "id": 1,
-//     "cells": ["x","","","","","","","",""],
-//     "over":false,
-//     "player_x": {
-//       "id": 1,
-//       "email": "and@and.com"
-//       },
-//     "player_o": null
-//   }
-// }
-
 const createSuccess = (data) => {
+  store.game = data.game
   store.player = 'x'
+  store.moves = 0
   generateBoard(data.game.cells)
 
   console.log('create data:', data)
@@ -57,6 +46,7 @@ const showSuccess = (data) => {
 
 const updateSuccess = (data) => {
   generateBoard(data.game.cells)
+  store.moves++
   success('Game updated!')
 }
 

@@ -31,9 +31,9 @@ const showGame = (data) => {
     }
   })
 }
-const updateGame = (data) => {
+const updateGame = (data, id) => {
   return $.ajax({
-    url: config.apiUrl + '/games/' + data.game.id, // TODO check this
+    url: config.apiUrl + '/games/' + id, // TODO check this
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

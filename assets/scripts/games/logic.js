@@ -12,13 +12,13 @@ const store = require('../store')
 //     "player_o": null
 //   }
 // }
-const gameBoard = store.game ? store.game.cells : null
 const togglePlayer = () => store.player ? 'O' : 'X'
-const placePiece = (move) => {
-  gameBoard[move[1]] = move[0]
-  return gameBoard
+const placePiece = (move, board) => {
+  board[move[1]] = move[0]
+  return board
 }
-const checkRow = (player, board = gameBoard) => {
+
+const checkRow = (player, board) => {
   let hasWon = false
   for (let i = 0; i < board.length; i += 3) {
     const j = i * 3
@@ -26,20 +26,20 @@ const checkRow = (player, board = gameBoard) => {
   }
   return hasWon
 }
-const checkColumn = (player, board = gameBoard) => {
+const checkColumn = (player, board) => {
   let hasWon = false
   for (let i = 0; i < 3; i++) {
     hasWon |= player && board[i] && board[i + 3] && board[i + 6]
   }
   return hasWon
 }
-const checkDiagonal = (player, board = gameBoard) => {
+const checkDiagonal = (player, board) => {
   let hasWon = false
   hasWon |= player && board[0] && board[4] && board[8]
   hasWon |= player && board[2] && board[4] && board[6]
   return hasWon
 }
-const checkWin = (player, board = gameBoard) => {
+const checkWin = (player, board) => {
   return checkRow(player, board) || checkColumn(player, board) || checkDiagonal(player, board)
 }
 

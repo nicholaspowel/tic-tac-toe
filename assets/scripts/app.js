@@ -15,5 +15,5 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   // Game handlers
   $('#new-game').on('click', gameEvents.onCreate)
-  $('.tile').on('click', console.log)
+  $('.tile').on('click', gameEvents.onTileClick)
 })

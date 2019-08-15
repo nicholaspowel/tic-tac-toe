@@ -29,24 +29,51 @@ const onShow = (event) => {
     .catch(ui.failure)
 }
 
+const updateBoard = (move, isOver = false) => {
+  event.preventDefault()
+  const id = store.game.id
+  const data = {
+    game: {
+      cell: {
+        index: move[1],
+        value: move[0]
+      },
+      over: isOver
+    }
+  }
+  api.updateGame(data, id)
+    .then(ui.updateSuccess)
+    .catch(ui.failure)
+}
+
 const onTileClick = (event) => {
   event.preventDefault()
-  let isOver = store.game ? store.game.over : false
-  // check if board is isOver
-  if (!isOver) {
-    //  TODO: dipslay that game is over
-  } else if (event.target.textContent !== '') {
-    //  TODOkey: 'value'display that player can't click there
-  } else {
-    const move = [store.player, event.target.dataset.tile]
-    const updateBoard = logic.placePiece(move)
-    isOver = logic.checkWin(move[1], updateBoard)
-    // placePiece
-    // checkWin
-    //  if win, set isOver
+  console.log('tile id: ', event.target.dataset.tile)
+  if (store.game) {
+    let isOver = store.game.over
+    const board = store.game.cells
+    // check if board is isOver
+    if (isOver) {
+      //  TODO: dipslay that game is over
+      console.log('Game Over')
+    } else if (event.target.textContent !== '') {
+      console.log('You cannot click there')
+    } else {
+      const move = [store.player, event.target.dataset.tile]
+      const newBoard = logic.placePiece(move, board)
+      isOver = logic.checkWin(move[1], newBoard)
 
-    updateBoard(move, isOver)
+      if (store.moves === 8) {
+        isOver = true
+      }
+      // placePiece
+      // checkWin
+      //  if win, set isOver
+
+      updateBoard(move, isOver)
+    }
   }
+  console.log('You need to create a game first')
 }
 // {
 //   "game": {
@@ -60,32 +87,6 @@ const onTileClick = (event) => {
 //     "player_o": null
 //   }
 // }
-
-const updateBoard = (move, isOver = false) => {
-  event.preventDefault()
-  const data = {
-    game: {
-      cell: {
-        index: move[1],
-        value: move[0]
-      },
-      over: isOver
-    }
-  }
-  // if data
-  // {
-  //   "game": {
-  //     "cell": {
-  //       "index": 0,
-  //       "value": "x"
-  //     },
-  //     "over": false
-  //   }
-  // }
-  api.updateGame(data)
-    .then(ui.updateSuccess)
-    .catch(ui.failure)
-}
 
 module.exports = {
   onCreate,
