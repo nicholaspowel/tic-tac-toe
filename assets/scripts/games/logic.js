@@ -12,14 +12,26 @@ const store = require('../store')
 //     "player_o": null
 //   }
 // }
-const checkTeam = isPlayerOne => isPlayerOne ? 'x' : 'o'
+const gameBoard = store.game ? store.game.cells : null
+const togglePlayer = () => store.player ? 'O' : 'X'
 const placePiece = (player, index) => {
-  const board = store.game.cells
+  gameBoard[index] = player
+  return gameBoard
 }
-const checkRow = (player, board) => {}
-const checkColumn = (player, board) => {}
-const checkDiagonal = (player, board) => {}
-const checkWin = (player, board) => {}
+const checkRow = (player, board = gameBoard) => {
+  let hasWon = false
+  // board.slice(0,3).every(play)
+  return hasWon
+}
+const checkColumn = (player, board = gameBoard) => {
+
+}
+const checkDiagonal = (player, board = gameBoard) => {
+
+}
+const checkWin = (player, board = gameBoard) => {
+  return checkRow(player, board) || checkColumn(player, board) || checkDiagonal(player, board)
+}
 
 const reset = () => {}
 const start = () => {}
@@ -30,7 +42,7 @@ module.exports = {
   checkColumn,
   checkDiagonal,
   checkWin,
-  checkTeam,
+  togglePlayer,
   reset,
   start
 }

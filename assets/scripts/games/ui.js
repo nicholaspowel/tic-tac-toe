@@ -18,10 +18,30 @@ const failure = (message) => {
   console.error('failure ran')
   $('form').trigger('reset')
 }
+// converts an array into the contents of tiles
+const generateBoard = (board) => {
+  $('.tile').each((index, tile) => {
+    $(tile).text(board[index])
+  })
+}
+
+// {
+//   "game": {
+//     "id": 1,
+//     "cells": ["x","","","","","","","",""],
+//     "over":false,
+//     "player_x": {
+//       "id": 1,
+//       "email": "and@and.com"
+//       },
+//     "player_o": null
+//   }
+// }
 
 const createSuccess = (data) => {
-  store.game = data.game
   store.player = 'x'
+  generateBoard(data.game.cells)
+
   console.log('create data:', data)
   success('Game created!')
 }
@@ -31,11 +51,13 @@ const indexSuccess = (data) => {
 }
 
 const showSuccess = (data) => {
-  success('game found!')
+  generateBoard(data.game.cells)
+  success('Game found!')
 }
 
-const updateSuccess = () => {
-  success('Example updated!')
+const updateSuccess = (data) => {
+  generateBoard(data.game.cells)
+  success('Game updated!')
 }
 
 module.exports = {
