@@ -1,5 +1,6 @@
 'use strict'
 const store = require('./../store.js')
+const logic = require('./logic.js')
 
 const success = (message = 'Success!') => {
 // does this need anything passed in?
@@ -27,7 +28,7 @@ const generateBoard = (board) => {
 
 const createSuccess = (data) => {
   store.game = data.game
-  store.player = 'x'
+  store.player = 'X'
   store.moves = 0
   generateBoard(data.game.cells)
 
@@ -46,7 +47,11 @@ const showSuccess = (data) => {
 
 const updateSuccess = (data) => {
   generateBoard(data.game.cells)
-  store.moves++
+  store.moves += 1
+  console.log(store.moves)
+  console.log('The player is ', store.player)
+  logic.togglePlayer()
+  console.log('the player is now:', store.player)
   success('Game updated!')
 }
 

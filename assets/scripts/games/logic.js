@@ -12,7 +12,9 @@ const store = require('../store')
 //     "player_o": null
 //   }
 // }
-const togglePlayer = () => store.player ? 'O' : 'X'
+const togglePlayer = () => {
+  store.player = store.player === 'X' ? 'O' : 'X'
+}
 const placePiece = (move, board) => {
   board[move[1]] = move[0]
   return board

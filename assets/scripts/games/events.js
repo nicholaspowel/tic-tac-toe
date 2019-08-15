@@ -28,7 +28,7 @@ const onShow = (event) => {
     .then(ui.showSuccess)
     .catch(ui.failure)
 }
-
+// UPDATE BOARD FUNCTION
 const updateBoard = (move, isOver = false) => {
   event.preventDefault()
   const id = store.game.id
@@ -53,6 +53,7 @@ const onTileClick = (event) => {
     let isOver = store.game.over
     const board = store.game.cells
     // check if board is isOver
+    console.log('before checks, isOver = ', isOver)
     if (isOver) {
       //  TODO: dipslay that game is over
       console.log('Game Over')
@@ -62,8 +63,9 @@ const onTileClick = (event) => {
       const move = [store.player, event.target.dataset.tile]
       const newBoard = logic.placePiece(move, board)
       isOver = logic.checkWin(move[1], newBoard)
-
-      if (store.moves === 8) {
+      console.log('after checkWin isOver = ', isOver)
+      if (store.moves === 4) {
+        store.isOver = true
         isOver = true
       }
       // placePiece
@@ -72,8 +74,9 @@ const onTileClick = (event) => {
 
       updateBoard(move, isOver)
     }
+  } else {
+    console.log('You need to create a game first')
   }
-  console.log('You need to create a game first')
 }
 // {
 //   "game": {
