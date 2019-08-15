@@ -20,6 +20,8 @@ const failure = (message) => {
 }
 
 const createSuccess = (data) => {
+  store.game = data.game
+  store.player = 'x'
   console.log('create data:', data)
   success('Game created!')
 }
