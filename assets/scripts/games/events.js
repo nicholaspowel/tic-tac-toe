@@ -62,10 +62,10 @@ const onTileClick = (event) => {
     } else {
       const move = [store.player, event.target.dataset.tile]
       const newBoard = logic.placePiece(move, board)
-      isOver = logic.checkWin(move[1], newBoard)
+      store.game.isOver = logic.checkWin(move[1], newBoard)
       console.log('after checkWin isOver = ', isOver)
-      if (store.moves === 4) {
-        store.isOver = true
+      if (store.moves === 8) {
+        store.game.over = true
         isOver = true
       }
       // placePiece

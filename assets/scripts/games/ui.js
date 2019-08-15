@@ -49,7 +49,6 @@ const updateSuccess = (data) => {
   generateBoard(data.game.cells)
   store.moves += 1
   console.log(store.moves)
-  console.log('The player is ', store.player)
   logic.togglePlayer()
   console.log('the player is now:', store.player)
   success('Game updated!')
