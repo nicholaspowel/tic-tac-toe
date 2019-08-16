@@ -69,11 +69,11 @@ const onTileClick = (event) => {
       const move = [store.player, event.target.dataset.tile]
       const newBoard = logic.placePiece(move, store.game.cells)
       store.game.over = logic.checkWin(move[0], newBoard)
-      if (store.moves >= 8) {
+      if (store.game.over) {
+        ui.message('#game-message', `Player ${store.player} Wins!`)
+      } else if (!newBoard.some(cell => cell === '')) {
         store.game.over = true
         ui.message('#game-message', 'That\'s a draw!')
-      } else if (store.game.over) {
-        ui.message('#game-message', `Player ${store.player} Wins!`)
       }
       updateBoard(move, store.game.over)
     }
