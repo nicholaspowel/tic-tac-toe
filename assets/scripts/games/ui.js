@@ -36,18 +36,15 @@ const createSuccess = (data) => {
 }
 
 const indexSuccess = (data) => {
-  message('#game-message', '')
+  // message('#game-message', '')
   store.user.games = data.games
   const wins = logic.countWins(data.games)
   $('#user-wins').text('Games Won: ' + wins[0])
-  // wins will be displayed here
-  // message('#message', 'All your games!')
 }
 
 const showSuccess = (data) => {
   store.game = data.game
   store.player = logic.getCurrentPlayer(store.game.cells)
-  // need a method for determining who the current player is
   generateBoard(data.game.cells)
   message('#message', 'Game found!', true)
 }
@@ -55,8 +52,10 @@ const showSuccess = (data) => {
 const updateSuccess = (data) => {
   generateBoard(data.game.cells)
   store.moves += 1
-  logic.togglePlayer()
-  message('#game-message', `It is now ${store.player}'s turn!`, true)
+  if (!store.game.over) {
+    logic.togglePlayer()
+    message('#game-message', `It is now ${store.player}'s turn!`, true)
+  }
 }
 
 module.exports = {
