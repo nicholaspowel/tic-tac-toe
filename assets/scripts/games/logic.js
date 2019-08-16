@@ -52,12 +52,9 @@ const getCurrentPlayer = (board) => {
 
 // Count Wins
 const countWins = (games) => {
-  console.log('inside countWins: games = ', games)
   const wins = games.filter(game => {
     console.log('In countWins filter: ', game.over, game.cells)
-    const winnerIsX = getCurrentPlayer(game.cells) === 'O'
-    const hasFiveMoves = game.cells.filter(cell => cell !== '').length
-    return game.over && winnerIsX && hasFiveMoves > 4
+    return game.over && checkWin('X', game.cells)
   })
   console.log('inside countWins: ', wins)
   return [wins.length, wins]
