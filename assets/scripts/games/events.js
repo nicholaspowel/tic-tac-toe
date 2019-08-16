@@ -50,29 +50,33 @@ const onTileClick = (event) => {
   event.preventDefault()
   console.log('tile id: ', event.target.dataset.tile)
   if (store.game) {
-    let isOver = store.game.over
+    // let isOver = store.game.over
     const board = store.game.cells
     // check if board is isOver
-    console.log('before checks, isOver = ', isOver)
-    if (isOver) {
+    // console.log('before checks, over = ', store.game.over)
+    if (store.game.over) {
       //  TODO: dipslay that game is over
       console.log('Game Over')
     } else if (event.target.textContent !== '') {
       console.log('You cannot click there')
     } else {
+      // console.log('The player is: ', store.player)
       const move = [store.player, event.target.dataset.tile]
+      // console.log('the board was:', board)
       const newBoard = logic.placePiece(move, board)
-      store.game.isOver = logic.checkWin(move[1], newBoard)
-      console.log('after checkWin isOver = ', isOver)
-      if (store.moves === 8) {
+      // console.log('the board is now:', newBoard)
+      // console.log('before checks, ovver = ', store.game.over)
+      store.game.over = logic.checkWin(move[0], newBoard)
+      // console.log('after checkWin isOver = ', store.game.over)
+      if (store.moves === 9) {
         store.game.over = true
-        isOver = true
+        // isOver = true
       }
       // placePiece
       // checkWin
       //  if win, set isOver
 
-      updateBoard(move, isOver)
+      updateBoard(move, store.game.over)
     }
   } else {
     console.log('You need to create a game first')
