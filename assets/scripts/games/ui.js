@@ -2,23 +2,22 @@
 const store = require('./../store.js')
 const logic = require('./logic.js')
 
-const success = (message = 'Success!') => {
+const message = (target = '#message', message = 'Success!', isSuccess = true) => {
 // does this need anything passed in?
-  $('#message').text(message)
-  $('#message').removeClass()
-  // try $('#message').className('success')
-  $('#message').addClass('success') // optional: adds css class for styling
-  console.log('success ran')
+  const style = isSuccess ? 'success' : 'failure'
+  $(target).text(message)
+  $(target).removeClass()
+  // try $(target).className('success')
+  $(target).addClass(style) // optional: adds css class for styling
   $('form').trigger('reset')
 }
 
-const failure = (message) => {
-  $('#message').text('Error')
-  $('#message').removeClass()
-  $('#message').addClass('failure') // Optional
-  console.error('failure ran')
-  $('form').trigger('reset')
-}
+// const failure = (message) => {
+//   $('#message').text(message)
+//   $('#message').removeClass()
+//   $('#message').addClass('failure') // Optional
+//   $('form').trigger('reset')
+// }
 // converts an array into the contents of tiles
 // TODO make more flexibile in order to display all games
 const generateBoard = (board = ['', '', '', '', '', '', '', '', '']) => {
@@ -28,22 +27,24 @@ const generateBoard = (board = ['', '', '', '', '', '', '', '', '']) => {
 }
 
 const createSuccess = (data) => {
+  message('#game-message', '')
   store.game = data.game
   store.player = 'X'
   store.moves = 0
   generateBoard(data.game.cells)
 
   console.log('create data:', data)
-  success('Game created!')
+  message('#message', 'Game created!', true)
 }
 
 const indexSuccess = (data) => {
+  message('#game-message', '')
   store.user.games = data.games
   const wins = logic.countWins(data.games)
   // console.log('User Wins: ' + wins[0], 'User Data: ', store.user)
   $('#user-wins').text(wins[0])
   // wins will be displayed here
-  // success('All your games!')
+  // message('#message', 'All your games!')
 }
 
 const showSuccess = (data) => {
@@ -51,7 +52,7 @@ const showSuccess = (data) => {
   store.player = logic.getCurrentPlayer(store.game.cells)
   // need a method for determining who the current player is
   generateBoard(data.game.cells)
-  success('Game found!')
+  message('#message', 'Game found!', true)
 }
 
 const updateSuccess = (data) => {
@@ -59,13 +60,13 @@ const updateSuccess = (data) => {
   store.moves += 1
   console.log(store.moves)
   logic.togglePlayer()
+  // give the player a messaging letting them know whose turn it is
   console.log('the player is now:', store.player)
-  success('Game updated!')
+  // message('#message', 'Game updated!', true)
 }
 
 module.exports = {
-  success,
-  failure,
+  message,
   createSuccess,
   indexSuccess,
   showSuccess,

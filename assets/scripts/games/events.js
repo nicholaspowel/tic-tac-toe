@@ -12,7 +12,9 @@ const onCreate = (event) => {
   api.createGame(data)
     .then(ui.createSuccess)
     .then(onIndex)
-    .catch(ui.failure)
+    .catch((event) => {
+      ui.message('#message', 'Operation Failed', false)
+    })
 }
 const onIndex = (event) => {
   // const query = '' // for future queries restricted to wins
@@ -21,7 +23,9 @@ const onIndex = (event) => {
   }
   api.indexGames()
     .then(ui.indexSuccess)
-    .catch(ui.failure)
+    .catch((event) => {
+      ui.message('#message', 'Operation Failed', false)
+    })
 }
 const onShow = (event) => {
   event.preventDefault()
@@ -29,7 +33,9 @@ const onShow = (event) => {
   console.log('onShow data:', data)
   api.showGame(data)
     .then(ui.showSuccess)
-    .catch(ui.failure)
+    .catch((event) => {
+      ui.message('#message', 'Operation Failed', false)
+    })
 }
 // UPDATE BOARD FUNCTION
 const updateBoard = (move, isOver = false) => {
@@ -46,43 +52,37 @@ const updateBoard = (move, isOver = false) => {
   }
   api.updateGame(data, id)
     .then(ui.updateSuccess)
-    .catch(ui.failure)
+    .catch((event) => {
+      ui.message('#message', 'Operation Failed', false)
+    })
 }
 
 const onTileClick = (event) => {
+  ui.message('#game-message', '')
   event.preventDefault()
   console.log('tile id: ', event.target.dataset.tile)
   if (store.game) {
-    // let isOver = store.game.over
-    const board = store.game.cells
-    // check if board is isOver
-    // console.log('before checks, over = ', store.game.over)
     if (store.game.over) {
-      //  TODO: dipslay that game is over
+      ui.message('#game-message', 'The game is already over!')
       // console.log('Game Over')
     } else if (event.target.textContent !== '') {
-      // console.log('You cannot click there')
+      $()
     } else {
-      // console.log('The player is: ', store.player)
       const move = [store.player, event.target.dataset.tile]
-      // console.log('the board was:', board)
       const newBoard = logic.placePiece(move, store.game.cells)
-      // console.log('the board is now:', newBoard)
-      // console.log('before checks, over = ', store.game.over)
       store.game.over = logic.checkWin(move[0], newBoard)
-      // console.log('after checkWin isOver = ', store.game.over)
       if (store.moves >= 9) {
         store.game.over = true
-        // isOver = true
+        ui.message('#game-message', 'That\'s a draw!')
       }
-      // placePiece
-      // checkWin
-      //  if win, set isOver
-
+      if (store.game.over) {
+        ui.message('#game-message', `Player ${store.player} Wins!`)
+      }
       updateBoard(move, store.game.over)
     }
   } else {
-    console.log('You need to create a game first')
+    // NEED TO MESAGE THAT A NEW GAME IS NEEDED
+    ui.message('#game-message', 'You need to create a game first')
   }
 }
 // {
