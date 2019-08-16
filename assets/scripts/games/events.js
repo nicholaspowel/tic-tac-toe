@@ -71,7 +71,7 @@ const onTileClick = (event) => {
       // console.log('before checks, over = ', store.game.over)
       store.game.over = logic.checkWin(move[0], newBoard)
       // console.log('after checkWin isOver = ', store.game.over)
-      if (store.moves === 9) {
+      if (store.moves >= 9) {
         store.game.over = true
         // isOver = true
       }

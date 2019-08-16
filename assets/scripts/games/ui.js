@@ -21,7 +21,7 @@ const failure = (message) => {
 }
 // converts an array into the contents of tiles
 // TODO make more flexibile in order to display all games
-const generateBoard = (board) => {
+const generateBoard = (board = ['', '', '', '', '', '', '', '', '']) => {
   $('.tile').each((index, tile) => {
     $(tile).text(board[index])
   })

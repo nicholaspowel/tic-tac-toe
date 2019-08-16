@@ -42,6 +42,9 @@ const signOutSuccess = () => {
   store.user = null
   store.game = null
   store.player = null
+  $('.tile').each((index, tile) => {
+    $(tile).text('')
+  })
   $('#signed-in-user').text('')
   success('Signed Out!')
   $('#on-auth, #login').toggleClass('hidden')

@@ -23,8 +23,7 @@ const placePiece = (move, board) => {
 const checkRow = (player, board) => {
   let hasWon = false
   for (let i = 0; i < board.length; i += 3) {
-    const j = i * 3
-    hasWon |= (player === board[j] && board[j] === board[j + 1] && board[j] === board[j + 2])
+    hasWon |= (player === board[i] && board[i] === board[i + 1] && board[i] === board[i + 2])
   }
   return hasWon
 }
@@ -46,15 +45,19 @@ const checkWin = (player, board) => {
 }
 // Get current player
 const getCurrentPlayer = (board) => {
-  const o = board.some(val => val === 'O')
-  const x = board.some(val => val === 'X')
-  return o < x ? 'O' : 'X'
+  const o = board.filter(val => val === 'O')
+  const x = board.filter(val => val === 'X')
+  return o.length < x.length ? 'O' : 'X'
 }
 
 // Count Wins
 const countWins = (games) => {
+  console.log('inside countWins: games = ', games)
   const wins = games.filter(game => {
-    return game.over && getCurrentPlayer(game.cells) === 'O' // && game.cells.filter(cell => cell !== '') > 4
+    console.log('In countWins filter: ', game.over, game.cells)
+    const winnerIsX = getCurrentPlayer(game.cells) === 'O'
+    const hasFiveMoves = game.cells.filter(cell => cell !== '').length
+    return game.over && winnerIsX && hasFiveMoves > 4
   })
   console.log('inside countWins: ', wins)
   return [wins.length, wins]
