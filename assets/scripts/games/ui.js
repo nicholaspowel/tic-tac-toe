@@ -32,17 +32,14 @@ const createSuccess = (data) => {
   store.player = 'X'
   store.moves = 0
   generateBoard(data.game.cells)
-
-  console.log('create data:', data)
-  message('#message', 'Game created!', true)
+  message('#game-message', `It is now ${store.player}'s turn!`, true)
 }
 
 const indexSuccess = (data) => {
   message('#game-message', '')
   store.user.games = data.games
   const wins = logic.countWins(data.games)
-  // console.log('User Wins: ' + wins[0], 'User Data: ', store.user)
-  $('#user-wins').text(wins[0])
+  $('#user-wins').text('Games Won: ' + wins[0])
   // wins will be displayed here
   // message('#message', 'All your games!')
 }
@@ -58,11 +55,8 @@ const showSuccess = (data) => {
 const updateSuccess = (data) => {
   generateBoard(data.game.cells)
   store.moves += 1
-  console.log(store.moves)
   logic.togglePlayer()
-  // give the player a messaging letting them know whose turn it is
-  console.log('the player is now:', store.player)
-  // message('#message', 'Game updated!', true)
+  message('#game-message', `It is now ${store.player}'s turn!`, true)
 }
 
 module.exports = {

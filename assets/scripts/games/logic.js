@@ -53,10 +53,8 @@ const getCurrentPlayer = (board) => {
 // Count Wins
 const countWins = (games) => {
   const wins = games.filter(game => {
-    console.log('In countWins filter: ', game.over, game.cells)
     return game.over && checkWin('X', game.cells)
   })
-  console.log('inside countWins: ', wins)
   return [wins.length, wins]
 }
 

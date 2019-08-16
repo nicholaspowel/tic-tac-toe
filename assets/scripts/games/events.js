@@ -30,7 +30,6 @@ const onIndex = (event) => {
 const onShow = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('onShow data:', data)
   api.showGame(data)
     .then(ui.showSuccess)
     .catch((event) => {
@@ -60,13 +59,12 @@ const updateBoard = (move, isOver = false) => {
 const onTileClick = (event) => {
   ui.message('#game-message', '')
   event.preventDefault()
-  console.log('tile id: ', event.target.dataset.tile)
   if (store.game) {
     if (store.game.over) {
       ui.message('#game-message', 'The game is already over!')
-      // console.log('Game Over')
+      // Add in easter egg for behavior if they click too many times
     } else if (event.target.textContent !== '') {
-      $()
+      ui.message('#game-message', 'You can\'t move there!')
     } else {
       const move = [store.player, event.target.dataset.tile]
       const newBoard = logic.placePiece(move, store.game.cells)

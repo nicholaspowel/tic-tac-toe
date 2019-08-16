@@ -7,7 +7,6 @@ const success = (message = '') => {
   $('#message').removeClass()
   // try $('#message').className('success')
   $('#message').addClass('success') // optional: adds css class for styling
-  console.log('success ran')
   $('form').trigger('reset')
 }
 const failure = (message) => {
@@ -25,7 +24,6 @@ const signUpSuccess = () => {
 const signInSuccess = (data) => {
 // handle storing token, if it exists
   store.user = data.user
-  console.log('new store:', store)
   $('#signed-in-user').text(store.user.email)
   $('#on-auth, #login').toggleClass('hidden') // fix this to use invisible where appropriate
   success(' You signed in!')
