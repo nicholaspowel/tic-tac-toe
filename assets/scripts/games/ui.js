@@ -40,7 +40,8 @@ const createSuccess = (data) => {
 const indexSuccess = (data) => {
   store.user.games = data.games
   const wins = logic.countWins(data.games)
-  console.log('User Wins: ' + wins[0], 'User Data: ', store.user)
+  // console.log('User Wins: ' + wins[0], 'User Data: ', store.user)
+  $('#user-wins').text(wins[0])
   // wins will be displayed here
   // success('All your games!')
 }

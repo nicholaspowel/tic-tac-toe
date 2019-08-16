@@ -12,8 +12,10 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic-Tac-Toe!</h1>
-      <h2> This is a toy application. Do not enter real emails/passwords, or emails/passwords you have used anywhere else!</h2>
+      <div>
+        <h1>Tic-Tac-Toe!</h1>
+        <h2> This is a toy application. Do not enter real emails/passwords, or emails/passwords you have used anywhere else!</h2>
+      </div>
       <!-- possibly create a nav bar here for log out -->
       <div id="message"></div>
       <main>
@@ -41,9 +43,13 @@
 
 
         <section id="on-auth" class="hidden">
-          <section id="#user-info">
+          <section id="user-actions">
             <!-- Change Password -->
-            <div id="signed-in-user"></div>
+            <div id="user-infor">
+              <div id="signed-in-user"></div>
+              <div id="user-wins"></div>
+            </div>
+
             <form id="change-password" class='border'>
               <fieldset>
                 <legend>Change Password</legend>
