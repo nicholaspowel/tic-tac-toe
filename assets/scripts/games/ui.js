@@ -20,6 +20,7 @@ const failure = (message) => {
   $('form').trigger('reset')
 }
 // converts an array into the contents of tiles
+// TODO make more flexibile in order to display all games
 const generateBoard = (board) => {
   $('.tile').each((index, tile) => {
     $(tile).text(board[index])
@@ -41,6 +42,8 @@ const indexSuccess = (data) => {
 }
 
 const showSuccess = (data) => {
+  store.game = data.game
+  // need a method for determining who the current player is
   generateBoard(data.game.cells)
   success('Game found!')
 }
