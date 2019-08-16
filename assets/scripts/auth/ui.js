@@ -29,6 +29,7 @@ const signInSuccess = (data) => {
   $('#signed-in-user').text(store.user.email)
   $('#on-auth, #login').toggleClass('hidden') // fix this to use invisible where appropriate
   success(' You signed in!')
+  return 'signin' // passes signin to the next function for calling onIndex
 }
 
 // Change Password

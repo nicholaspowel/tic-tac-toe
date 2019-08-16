@@ -44,13 +44,53 @@ const checkDiagonal = (player, board) => {
 const checkWin = (player, board) => {
   return checkRow(player, board) || checkColumn(player, board) || checkDiagonal(player, board)
 }
-// Count Wins
+// Get current player
+const getCurrentPlayer = (board) => {
+  const o = board.some(val => val === 'O')
+  const x = board.some(val => val === 'X')
+  return o < x ? 'O' : 'X'
+}
 
+// Count Wins
+const countWins = (games) => {
+  const wins = games.filter(game => {
+    return game.over && getCurrentPlayer(game.cells) === 'O' // && game.cells.filter(cell => cell !== '') > 4
+  })
+  console.log('inside countWins: ', wins)
+  return [wins.length, wins]
+}
+
+// {
+//   "games": [
+//     {
+//       "id": 1,
+//       "cells": ["o","x","o","x","o","x","o","x","o"],
+//       "over": true,
+//       "player_x": {
+//         "id": 1,
+//         "email": "and@and.com"
+//       },
+//       "player_o": null
+//     },
+//     {
+//       "id": 2,
+//       "cells": ["","","","","","","","",""],
+//       "over": false,
+//       "player_x": {
+//         "id": 3,
+//         "email": "dna@dna.com"
+//       },
+//       "player_o": null
+//     }
+//   ]
+// }
 module.exports = {
   placePiece,
   checkRow,
   checkColumn,
   checkDiagonal,
   checkWin,
-  togglePlayer
+  togglePlayer,
+  getCurrentPlayer,
+  countWins
 }

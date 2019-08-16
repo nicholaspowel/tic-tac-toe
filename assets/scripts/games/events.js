@@ -11,11 +11,14 @@ const onCreate = (event) => {
 
   api.createGame(data)
     .then(ui.createSuccess)
+    .then(onIndex)
     .catch(ui.failure)
 }
 const onIndex = (event) => {
-  event.preventDefault()
-
+  // const query = '' // for future queries restricted to wins
+  if (event && event !== 'signin') {
+    event.preventDefault()
+  }
   api.indexGames()
     .then(ui.indexSuccess)
     .catch(ui.failure)
@@ -56,16 +59,16 @@ const onTileClick = (event) => {
     // console.log('before checks, over = ', store.game.over)
     if (store.game.over) {
       //  TODO: dipslay that game is over
-      console.log('Game Over')
+      // console.log('Game Over')
     } else if (event.target.textContent !== '') {
-      console.log('You cannot click there')
+      // console.log('You cannot click there')
     } else {
       // console.log('The player is: ', store.player)
       const move = [store.player, event.target.dataset.tile]
       // console.log('the board was:', board)
-      const newBoard = logic.placePiece(move, board)
+      const newBoard = logic.placePiece(move, store.game.cells)
       // console.log('the board is now:', newBoard)
-      // console.log('before checks, ovver = ', store.game.over)
+      // console.log('before checks, over = ', store.game.over)
       store.game.over = logic.checkWin(move[0], newBoard)
       // console.log('after checkWin isOver = ', store.game.over)
       if (store.moves === 9) {

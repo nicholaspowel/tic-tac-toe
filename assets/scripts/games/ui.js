@@ -38,11 +38,16 @@ const createSuccess = (data) => {
 }
 
 const indexSuccess = (data) => {
-  success('All your games!')
+  store.user.games = data.games
+  const wins = logic.countWins(data.games)
+  console.log('User Wins: ' + wins[0], 'User Data: ', store.user)
+  // wins will be displayed here
+  // success('All your games!')
 }
 
 const showSuccess = (data) => {
   store.game = data.game
+  store.player = logic.getCurrentPlayer(store.game.cells)
   // need a method for determining who the current player is
   generateBoard(data.game.cells)
   success('Game found!')

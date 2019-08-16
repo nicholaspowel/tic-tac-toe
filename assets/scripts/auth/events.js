@@ -1,6 +1,7 @@
 'use strict'
 const api = require('./api.js')
 const ui = require('./ui.js')
+const gameEvents = require('../games/events.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
 // event handler for sign-up form
@@ -22,6 +23,7 @@ const onSignIn = (event) => {
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(gameEvents.onIndex)
     .catch(ui.failure)
 }
 
