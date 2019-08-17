@@ -1,5 +1,4 @@
 const store = require('../store')
-
 // {
 //   "game": {
 //     "id": 1,
@@ -58,6 +57,18 @@ const countWins = (games) => {
   return [wins.length, wins]
 }
 
+const clickRoll = (message) => {
+  const count = store.clickCounter
+  if (count < 12) {
+    console.log('count < 15', count)
+  } else if (count < 15) {
+    console.log('count < 25', count)
+  } else {
+    message('#game-message', 'Once more with gusto!')
+    store.clickCounter = 10
+  }
+  store.clickCounter += 1
+}
 // {
 //   "games": [
 //     {
@@ -90,5 +101,6 @@ module.exports = {
   checkWin,
   togglePlayer,
   getCurrentPlayer,
-  countWins
+  countWins,
+  clickRoll
 }

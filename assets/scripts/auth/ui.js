@@ -24,6 +24,7 @@ const signUpSuccess = () => {
 const signInSuccess = (data) => {
 // handle storing token, if it exists
   store.user = data.user
+  store.clickCounter = 0
   $('#signed-in-user').text(store.user.email)
   $('#on-auth, #login').toggleClass('hidden') // fix this to use invisible where appropriate
   success(' You signed in!')
@@ -40,6 +41,7 @@ const signOutSuccess = () => {
   store.user = null
   store.game = null
   store.player = null
+  store.clickCounter = 0
   $('.tile').each((index, tile) => {
     $(tile).text('')
   })

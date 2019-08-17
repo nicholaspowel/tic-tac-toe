@@ -8,7 +8,6 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const onCreate = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-
   api.createGame(data)
     .then(ui.createSuccess)
     .then(onIndex)
@@ -60,8 +59,11 @@ const onTileClick = (event) => {
   ui.message('#game-message', '')
   event.preventDefault()
   if (store.game) {
-    if (store.game.over) {
+    if (store.clickCounter > 10) {
+      logic.clickRoll(ui.message)
+    } else if (store.game.over) {
       ui.message('#game-message', 'The game is already over!')
+      store.clickCounter++
       // Add in easter egg for behavior if they click too many times
     } else if (event.target.textContent !== '') {
       ui.message('#game-message', 'You can\'t move there!')

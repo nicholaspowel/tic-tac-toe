@@ -3,7 +3,6 @@ const store = require('./../store.js')
 const logic = require('./logic.js')
 
 const message = (target = '#message', message = 'Success!', isSuccess = true) => {
-// does this need anything passed in?
   const style = isSuccess ? 'success' : 'failure'
   $(target).text(message)
   $(target).removeClass()
