@@ -30,6 +30,7 @@ const createSuccess = (data) => {
   store.game = data.game
   store.player = 'X'
   store.moves = 0
+  store.clickCounter = store.clickCounter < 16 ? 0 : store.clickCounter
   generateBoard(data.game.cells)
   message('#game-message', `It is now ${store.player}'s turn!`, true)
 }
