@@ -23,7 +23,10 @@ const onIndex = (event) => {
   api.indexGames()
     .then(ui.indexSuccess)
     .then(() => {
-      $('.mini-board').on('click', onShow)
+      $('.mini-board').on('click', (event) => {
+        $('#myGamesModal').modal('toggle')
+        onShow(event)
+      })
     })
     .catch((event) => {
       ui.message('#message', 'Operation Failed', false)
