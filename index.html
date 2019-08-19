@@ -84,26 +84,34 @@
                   </form>
                 </div>
               </li>
+              <li>
+                <div id="user-info" class="on-auth hidden">
+                  <div id="user-wins"></div>
+                  <div id="signed-in-user"></div>
+                </div>
+              </li>
             </ul>
+            <div>
+              <div id="message" class="navbar-text"></div>
+              <div id="game-message" class="navbar-text"></div>
+            </div>
+            <button class="btn btn-outline-success my-2 my-sm-0 on-auth hidden" id="sign-out">Sign Out</button>
           </div>
         </nav>
-      <div id="message"></div>
-      <div id="game-message"></div>
+
       <main>
 
         <section id="on-auth" class="hidden">
           <section id="user-actions">
             <!-- Change Password -->
-            <div id="user-infor">
-              <div id="signed-in-user"></div>
+            <!-- <div id="user-info">
               <div id="user-wins"></div>
-            </div>
+              <div id="signed-in-user"></div>
+            </div> -->
 
             <!-- SIGN OUT, this will trigger hiding this section and the board,
              and showing the login fields again of the page -->
-            <div>
-              <button id="sign-out">Sign Out</button>
-            </div>
+
           </section>
           <div id="game-board" class="">
             <div class="container">
