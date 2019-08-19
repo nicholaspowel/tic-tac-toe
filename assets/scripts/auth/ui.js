@@ -26,7 +26,7 @@ const signInSuccess = (data) => {
   store.user = data.user
   store.clickCounter = 0
   $('#signed-in-user').text(store.user.email)
-  $('#on-auth, .login').toggleClass('hidden') // fix this to use invisible where appropriate
+  $('#on-auth, .login, .on-auth').toggleClass('hidden') // fix this to use invisible where appropriate
   success(' You signed in!')
   return 'signin' // passes signin to the next function for calling onIndex
 }
@@ -47,7 +47,7 @@ const signOutSuccess = () => {
   })
   $('#signed-in-user').text('')
   success('Signed Out!')
-  $('#on-auth, .login').toggleClass('hidden')
+  $('#on-auth, .login, .on-auth').toggleClass('hidden')
   $('#signed-in-user').text('')
 }
 
