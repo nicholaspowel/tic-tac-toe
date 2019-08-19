@@ -59,9 +59,27 @@ const countWins = (games) => {
 
 const clickRoll = (message) => {
   const count = store.clickCounter
-  if (count < 12) {
-    console.log('count < 15', count)
+  if (count < 11) {
+    message('#game-message', 'Please stop')
+  } else if (count < 12) {
+    message('#game-message', 'Really, that\'s enough of that')
+  } else if (count < 13) {
+    message('#game-message', 'Are you always like this?')
+  } else if (count < 14) {
+    message('#game-message', 'What would your parents say?')
   } else if (count < 15) {
+    message('#game-message', 'This is your last warning')
+  } else if (count < 16) {
+    message('#game-message', 'That\'s it, you asked for it!')
+  } else if (count < 17) {
+    console.log('count < 25', count)
+  } else if (count < 18) {
+    console.log('count < 25', count)
+  } else if (count < 19) {
+    console.log('count < 25', count)
+  } else if (count < 20) {
+    console.log('count < 25', count)
+  } else if (count < 21) {
     console.log('count < 25', count)
   } else {
     message('#game-message', 'Once more with gusto!')
