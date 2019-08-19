@@ -39,6 +39,29 @@ const indexSuccess = (data) => {
   store.user.games = data.games
   const wins = logic.countWins(data.games)
   $('#user-wins').text('Games Won: ' + wins[0])
+  const gameList = data.games.reduce(function (list, game, index) {
+    // create a div using the relevant content
+    const htmlString = `
+      <div data-id="${game.id}" data-over="${game.over}" class="mini-board container">
+        <h6>${game.id}</h6>
+        <div class="row">
+          <div class="col-4 mini-box">${game.cells[0]}</div>
+          <div class="col-4 mini-box">${game.cells[1]}</div>
+          <div class="col-4 mini-box">${game.cells[2]}</div>
+          <div class="col-4 mini-box">${game.cells[3]}</div>
+          <div class="col-4 mini-box">${game.cells[4]}</div>
+          <div class="col-4 mini-box">${game.cells[5]}</div>
+          <div class="col-4 mini-box">${game.cells[6]}</div>
+          <div class="col-4 mini-box">${game.cells[7]}</div>
+          <div class="col-4 mini-box">${game.cells[8]}</div>
+        </div>
+      </div>
+    `
+
+    return list + htmlString
+  }, '')
+  console.log(gameList)
+  $('#game-list').html(gameList)
 }
 
 const showSuccess = (data) => {

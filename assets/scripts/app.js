@@ -16,5 +16,5 @@ $(() => {
   // Game handlers
   $('#new-game').on('click', gameEvents.onCreate)
   $('.tile').on('click', gameEvents.onTileClick)
-  $('#show-game').on('submit', gameEvents.onShow)
+  // $('#show-game').on('submit', gameEvents.onShow)
 })

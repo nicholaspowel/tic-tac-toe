@@ -22,15 +22,24 @@ const onIndex = (event) => {
   }
   api.indexGames()
     .then(ui.indexSuccess)
+    .then(() => {
+      $('.mini-board').on('click', onShow)
+    })
     .catch((event) => {
       ui.message('#message', 'Operation Failed', false)
     })
 }
 const onShow = (event) => {
   event.preventDefault()
-  const data = getFormFields(event.target)
+  /*  */
+  const data = {
+    game: {
+      id: event.currentTarget.dataset.id
+    }
+  } // getFormFields(event.target)
   api.showGame(data)
     .then(ui.showSuccess)
+    .then(onIndex)
     .catch((event) => {
       ui.message('#message', 'Operation Failed', false)
     })
