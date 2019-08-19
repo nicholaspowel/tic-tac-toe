@@ -6,11 +6,11 @@ Tic Tac Toe, or Noughts and Crosses, is a game about fighting over who gets to g
 ## Planning
 I started this project by first coming up with wireframes based on a loose idea of what I wanted to create, and then made user stories. In hindsight I would have done the stories first, because it would have made it clearer which elements I need to have usable first.
 #### Wireframe
-![wireframe1 image](https://imgur.com/UUGN7y8)
+![wireframe1 image](https://i.imgur.com/UUGN7y8.jpg)
 
-![wirefrane2 image](https://imgur.com/oMcD5eA)
+![wirefrane2 image](https://i.imgur.com/oMcD5eA.jpg)
 
-![wireframe3 image](https://imgur.com/9X9zWMa)
+![wireframe3 image](https://i.imgur.com/9X9zWMa.jpg)
 #### User stories
 ```
   As a user, I want to create a new game, and expect to see an empty board
