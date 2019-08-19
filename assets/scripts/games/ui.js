@@ -60,7 +60,6 @@ const indexSuccess = (data) => {
 
     return list + htmlString
   }, '')
-  console.log(gameList)
   $('#game-list').html(gameList)
 }
 
@@ -68,6 +67,8 @@ const showSuccess = (data) => {
   store.game = data.game
   store.player = logic.getCurrentPlayer(store.game.cells)
   generateBoard(data.game.cells)
+  const isOver = logic.checkWin('X', store.game.cells) || logic.checkWin('O', store.game.cells)
+  store.game.over = isOver
   message('#message', 'Game found!', true)
 }
 

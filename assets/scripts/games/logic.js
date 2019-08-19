@@ -72,18 +72,16 @@ const clickRoll = (message) => {
   } else if (count < 16) {
     message('#game-message', 'That\'s it, you asked for it!')
   } else if (count < 17) {
-    console.log('count < 25', count)
+    message('#game-message', 'This is the song that never ends.')
   } else if (count < 18) {
-    console.log('count < 25', count)
+    message('#game-message', 'Yes, it goes on and on my friends.')
   } else if (count < 19) {
-    console.log('count < 25', count)
+    message('#game-message', 'Some people started singing it, not knowing what it was,')
   } else if (count < 20) {
-    console.log('count < 25', count)
-  } else if (count < 21) {
-    console.log('count < 25', count)
+    message('#game-message', 'And they\'ll continue singing it forever just because.')
   } else {
-    message('#game-message', 'Once more with gusto!')
-    store.clickCounter = 10
+    message('#game-message', 'This is the song that never ends.')
+    store.clickCounter = 16
   }
   store.clickCounter += 1
 }
