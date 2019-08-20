@@ -43,7 +43,7 @@ const indexSuccess = (data) => {
   const gameList = data.games.reduce(function (list, game, index) {
     // create a div using the relevant content
     const htmlString = `
-      <div data-id="${game.id}" data-over="${game.over}" class="col-3 mini-board container">
+      <div data-id="${game.id}" data-over="${game.over}" class="col-4 col-md-3 mini-board container">
         <h6>Game ID: ${game.id}</h6>
         <div class="row">
           <div class="col-4 mini-box">${game.cells[0]}</div>

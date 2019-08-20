@@ -44,8 +44,8 @@ const checkWin = (player, board) => {
 }
 // Get current player
 const getCurrentPlayer = (board) => {
-  const o = board.filter(val => val.toUppercase() === 'O')
-  const x = board.filter(val => val.toUppercase() === 'X')
+  const o = board.filter(val => val === 'O')
+  const x = board.filter(val => val === 'X')
   return o.length < x.length ? 'O' : 'X'
 }
 

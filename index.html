@@ -66,6 +66,9 @@
                   </form>
                 </div>
               </li>
+              <li>
+                <button class="btn btn-outline-success my-2 my-sm-0 on-auth hidden" id="sign-out">Sign Out</button>
+              </li>
               <li class="nav-item dropdown on-auth hidden">
                 <a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Change Password
@@ -84,6 +87,14 @@
                   </form>
                 </div>
               </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li>
+                <div>
+                  <div id="message" class="navbar-text"></div>
+                  <div id="game-message" class="navbar-text"></div>
+                </div>
+              </li>
               <li>
                 <div id="user-info" class="on-auth hidden">
                   <div id="user-wins"></div>
@@ -91,11 +102,6 @@
                 </div>
               </li>
             </ul>
-            <div>
-              <div id="message" class="navbar-text"></div>
-              <div id="game-message" class="navbar-text"></div>
-            </div>
-            <button class="btn btn-outline-success my-2 my-sm-0 on-auth hidden" id="sign-out">Sign Out</button>
           </div>
         </nav>
 

@@ -44,7 +44,7 @@ const onShow = (event) => {
     .then(ui.showSuccess)
     .then(onIndex)
     .catch((event) => {
-      ui.message('#message', 'Operation Failed', false)
+      ui.message('#message', 'Failed to load game', false)
     })
 }
 // UPDATE BOARD FUNCTION

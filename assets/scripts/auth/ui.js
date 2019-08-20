@@ -25,7 +25,7 @@ const signInSuccess = (data) => {
 // handle storing token, if it exists
   store.user = data.user
   store.clickCounter = 0
-  $('#signed-in-user').text(store.user.email)
+  $('#signed-in-user').text('User:' + store.user.email)
   $('#on-auth, .login, .on-auth').toggleClass('hidden') // fix this to use invisible where appropriate
   success(' You signed in!')
   return 'signin' // passes signin to the next function for calling onIndex
