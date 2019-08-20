@@ -13,7 +13,6 @@ const failure = (message) => {
   $('#message').text('Error')
   $('#message').removeClass()
   $('#message').addClass('failure') // Optional
-  console.error('failure ran')
   $('form').trigger('reset')
 }
 
