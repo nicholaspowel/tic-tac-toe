@@ -64,6 +64,7 @@ const updateBoard = (move, isOver = false) => {
     .then(ui.updateSuccess)
     .catch((event) => {
       ui.message('#message', 'Operation Failed', false)
+      store.canClick = true
     })
 }
 
@@ -78,7 +79,7 @@ const onTileClick = (event) => {
         ui.message('#game-message', 'The game is already over!')
         store.clickCounter++
         // Add in easter egg for behavior if they click too many times
-      } else if (event.target.textContent !== '') {
+      } else if (event.target.textContent !== '') { // why would this allow clicking in vicious behaviou
         ui.message('#game-message', 'You can\'t move there!')
       } else {
         store.canClick = false

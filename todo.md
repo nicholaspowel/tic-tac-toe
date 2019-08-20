@@ -16,3 +16,5 @@ highlight who won by indicating on board
 more animations
 highlight won and over games in the my games preview
 add filters to my games preview
+
+consider redoing alerts using .html() method and .appendTo() method, and putting in separate file
