@@ -41,6 +41,7 @@ const signOutSuccess = () => {
   store.game = null
   store.player = null
   store.clickCounter = 0
+  store.canClick = false
   $('.tile').each((index, tile) => {
     $(tile).text('')
   })

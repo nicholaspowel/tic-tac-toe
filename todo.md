@@ -14,3 +14,5 @@ Make readmes like Elinas
 pokemon api integration or theme
 highlight who won by indicating on board
 more animations
+highlight won and over games in the my games preview
+add filters to my games preview

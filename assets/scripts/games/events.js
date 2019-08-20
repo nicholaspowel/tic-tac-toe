@@ -70,26 +70,29 @@ const updateBoard = (move, isOver = false) => {
 const onTileClick = (event) => {
   ui.message('#game-message', '')
   event.preventDefault()
-  if (store.game) {
-    if (store.clickCounter > 10) {
-      logic.clickRoll(ui.message)
-    } else if (store.game.over) {
-      ui.message('#game-message', 'The game is already over!')
-      store.clickCounter++
-      // Add in easter egg for behavior if they click too many times
-    } else if (event.target.textContent !== '') {
-      ui.message('#game-message', 'You can\'t move there!')
-    } else {
-      const move = [store.player, event.target.dataset.tile]
-      const newBoard = logic.placePiece(move, store.game.cells)
-      store.game.over = logic.checkWin(move[0], newBoard)
-      if (store.game.over) {
-        ui.message('#game-message', `Player ${store.player} Wins!`)
-      } else if (!newBoard.some(cell => cell === '')) {
-        store.game.over = true
-        ui.message('#game-message', 'That\'s a draw!')
+  if (store.canClick) {
+    if (store.game) {
+      if (store.clickCounter > 10) {
+        logic.clickRoll(ui.message)
+      } else if (store.game.over) {
+        ui.message('#game-message', 'The game is already over!')
+        store.clickCounter++
+        // Add in easter egg for behavior if they click too many times
+      } else if (event.target.textContent !== '') {
+        ui.message('#game-message', 'You can\'t move there!')
+      } else {
+        store.canClick = false
+        const move = [store.player, event.target.dataset.tile]
+        const newBoard = logic.placePiece(move, store.game.cells)
+        store.game.over = logic.checkWin(move[0], newBoard)
+        if (store.game.over) {
+          ui.message('#game-message', `Player ${store.player} Wins!`)
+        } else if (!newBoard.some(cell => cell === '')) {
+          store.game.over = true
+          ui.message('#game-message', 'That\'s a draw!')
+        }
+        updateBoard(move, store.game.over)
       }
-      updateBoard(move, store.game.over)
     }
   } else {
     // NEED TO MESAGE THAT A NEW GAME IS NEEDED
