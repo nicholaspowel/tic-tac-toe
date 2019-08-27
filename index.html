@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div>
+        <h1>Tic-Tac-Toe!</h1>
+        <h6> This is a toy application. Do not enter real emails/passwords, or emails/passwords you have used anywhere else!</h6>
+      </div>
+      <!-- TODO use a toast or a modal to display messages -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Tic-Tac-Toe</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown login">
+                <a class="nav-link dropdown-toggle" href="#" id="signInDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sign In
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <form id="sign-in" class="px-4 py-3 ">
+                    <fieldset>
+                      <legend>Sign In!</legend>
+                      <div class="form-group">
+                        <input type="email"  class="form-control" name="credentials[email]" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+                      </div>
+                      <input type="submit" value="Sign In!">
+                    </fieldset>
+                  </form>
+                </div>
+              </li>
+              <li class="nav-item dropdown login">
+                <a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sign Up
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <form id="sign-up" class="px-4 py-3">
+                    <div class="form-group">
+                      <label>Email address</label>
+                      <input type="email" class="form-control" name="credentials[email]" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label>Confirm Password</label>
+                      <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                  </form>
+                </div>
+              </li>
+              <li>
+                <button class="btn btn-outline-success my-2 my-sm-0 on-auth hidden" id="sign-out">Sign Out</button>
+              </li>
+              <li class="nav-item dropdown on-auth hidden">
+                <a class="nav-link dropdown-toggle" href="#" id="signUpDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Change Password
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <form id="change-password" class="px-4 py-3">
+                    <div class="form-group">
+                      <label>Current Password</label>
+                      <input type="password" class="form-control" name="passwords[old]" placeholder="Current Password">
+                    </div>
+                    <div class="form-group">
+                      <label>New Password</label>
+                      <input type="password" class="form-control" name="passwords[new]" placeholder="New Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                  </form>
+                </div>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li>
+                <div>
+                  <div id="message" class="navbar-text"></div>
+                  <div id="game-message" class="navbar-text"></div>
+                </div>
+              </li>
+              <li>
+                <div id="user-info" class="on-auth hidden">
+                  <div id="user-wins"></div>
+                  <div id="signed-in-user"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+      <main>
+
+        <section id="on-auth" class="hidden">
+          <section id="user-actions">
+            <!-- Change Password -->
+            <!-- <div id="user-info">
+              <div id="user-wins"></div>
+              <div id="signed-in-user"></div>
+            </div> -->
+
+            <!-- SIGN OUT, this will trigger hiding this section and the board,
+             and showing the login fields again of the page -->
+
+          </section>
+          <div id="game-board" class="">
+            <div class="container">
+              <!-- DIPLAY THE BOARD NUMBER!!!! -->
+              <div class="board row">
+                <div class="col-4 box tile" data-tile="0"></div>
+                <div class="col-4 box tile" data-tile="1"></div>
+                <div class="col-4 box tile" data-tile="2"></div>
+                <div class="col-4 box tile" data-tile="3"></div>
+                <div class="col-4 box tile" data-tile="4"></div>
+                <div class="col-4 box tile" data-tile="5"></div>
+                <div class="col-4 box tile" data-tile="6"></div>
+                <div class="col-4 box tile" data-tile="7"></div>
+                <div class="col-4 box tile" data-tile="8"></div>
+              </div>
+            </div>
+          </div>
+          <div id="game-controls">
+            <button id="new-game">New Game</button>
+            <!-- <form id="show-game">
+              <fieldset>
+                <legend>Load Game</legend>
+                <input type="text" name="game[id]" placeholder="ID">
+                <input type="submit" value="Show Game">
+              </fieldset>
+            </form> -->
+            <!-- <form id="index-examples">
+              <fieldset>
+                <legend>Show My Games</legend>
+                <input type="submit" value="Show My Games">
+              </fieldset>
+            </form> -->
+          </div>
+          <!-- CREATE A MODAL FOR THESE! -->
+          <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myGamesModal">
+              My Games
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myGamesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
+                      <div id="game-list" class="row"></div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </section>
+      </main>
+    </body>
+</html>
